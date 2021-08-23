@@ -1,19 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'all_data.dart';
+part of 'categoryList.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AllData _$AllDataFromJson(Map<String, dynamic> json) {
-  return AllData(
-    (json['categorys'] as List)
+CategoryList _$CategoryListFromJson(Map<String, dynamic> json) {
+  return CategoryList(
+    (json['categories'] as List<dynamic>)
         .map((e) => Category.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
 }
 
-Map<String, dynamic> _$AllDataToJson(AllData instance) => <String, dynamic>{
-      'categorys': instance.categorys.map((e) => e.toJson()).toList(),
+Map<String, dynamic> _$CategoryListToJson(CategoryList instance) =>
+    <String, dynamic>{
+      'categories': instance.categories.map((e) => e.toJson()).toList(),
     };

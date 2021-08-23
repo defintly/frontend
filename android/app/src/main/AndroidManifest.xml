@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.definitly_app">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="definitly_app"
+        android:name="io.flutter.app.FlutterApplication"
+        android:label="defintly"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

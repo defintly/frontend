@@ -1,16 +1,15 @@
-# definitly_app
+# defintly - An app to help you define concepts well.
 
-A new Flutter application.
+![Defintly logo](https://raw.githubusercontent.com/defintly/backend/dev/.assets/logo.png)
 
-## Getting Started
+This is the frontend application for **defintly**, re-developed as part of a study assignment for the Berlin School of Economics and Law (Hochschule für Wirtschaft und Recht Berlin).
 
-This project is a starting point for a Flutter application.
+Steps to compile:
+```
+flutter pub get
+flutter pub run build_runner build
+flutter pub run flutter_launcher_icons:main
+flutter build apk
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Checkout the [Defintly site](https://defintly.glideapp.io) for more information. Also visit [The AGI Sentinel Initiative](http://agisi.org) for more research about Artificial General Intelligence.
