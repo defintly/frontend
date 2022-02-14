@@ -7,7 +7,6 @@ import 'concept_details.dart';
 
 class CollectionDetails extends StatelessWidget {
   final Collection indexCollection;
-
   CollectionDetails(this.indexCollection);
 
   @override
@@ -53,13 +52,11 @@ class CollectionDetails extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Container(
-                          alignment: Alignment.topRight,
-                          child: Icon(Icons.arrow_forward_ios))
                     ],
                   ),
                 ));
               },
-            )));
+            ),
+        ));
   }
 }
