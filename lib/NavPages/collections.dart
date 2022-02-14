@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:definitly_app/data_api.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:definitly_app/navigation.dart';
 
 import 'collection_details.dart';
 
@@ -15,6 +16,7 @@ class Collections extends StatelessWidget {
     return MaterialApp(
         title: title,
         home: Scaffold(
+            drawer: NavigationDrawerWidget(),
             appBar: AppBar(
               title: Text("By Collections"),
             ),

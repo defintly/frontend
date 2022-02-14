@@ -4,6 +4,7 @@ import 'package:definitly_app/data_api.dart';
 import 'package:definitly_app/modals/criteria.dart';
 import 'package:definitly_app/NavPages/criteria_details.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:definitly_app/navigation.dart';
 
 class AllCriteria extends StatelessWidget {
   AllCriteria({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class AllCriteria extends StatelessWidget {
     return MaterialApp(
         title: title,
         home: Scaffold(
+            drawer: NavigationDrawerWidget(),
             appBar: AppBar(
               title: Text("All Criteria"),
             ),

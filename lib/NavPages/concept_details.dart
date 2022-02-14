@@ -6,6 +6,7 @@ import 'package:definitly_app/data_api.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:definitly_app/navigation.dart';
 
 class ConceptDetails extends StatelessWidget {
   final Concept index;
@@ -16,6 +17,7 @@ class ConceptDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var collection = dataApi.getMatchingCollection(index);
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
       appBar: AppBar(title: Text(index.author)),
       body: ListView(children: [
         Column(

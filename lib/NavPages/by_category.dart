@@ -5,6 +5,7 @@ import 'package:definitly_app/modals/criteria.dart';
 import 'package:definitly_app/NavPages/criteria_details.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:definitly_app/navigation.dart';
 
 import 'category_details.dart';
 
@@ -17,6 +18,7 @@ class ByCategory extends StatelessWidget {
     return MaterialApp(
         title: title,
         home: Scaffold(
+            drawer: NavigationDrawerWidget(),
             appBar: AppBar(
               title: Text("Collections"),
             ),

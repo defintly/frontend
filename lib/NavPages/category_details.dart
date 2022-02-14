@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:definitly_app/data_api.dart';
 import 'package:definitly_app/modals/category.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:definitly_app/navigation.dart';
 
 import 'criteria_details.dart';
 
@@ -16,6 +17,7 @@ class CategoryDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var criteria = dataApi.getMatchingCriteria(indexCategory);
     return Scaffold(
+        drawer: NavigationDrawerWidget(),
         appBar: AppBar(title: Text(indexCategory.category)),
         body: ListView(physics: ScrollPhysics(), children: [
           Column(children: [

@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:definitly_app/data_api.dart';
 import 'package:definitly_app/modals/category.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:definitly_app/navigation.dart';
 
 import 'category_details.dart';
 
@@ -14,6 +15,7 @@ class CriteriaDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var category = dataApi.getMatchingCategory(index);
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
       appBar: AppBar(title: Text(index.quality_criterion)),
       body: ListView(children: [
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

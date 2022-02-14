@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:definitly_app/data_api.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:definitly_app/navigation.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
+          drawer: NavigationDrawerWidget(),
             appBar: AppBar(
               title: Text("Overview"),
             ),

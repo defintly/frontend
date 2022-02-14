@@ -7,6 +7,7 @@ import 'NavPages/by_category.dart';
 import 'NavPages/contact.dart';
 import 'NavPages/define_it.dart';
 import 'data_api.dart';
+import 'navigation.dart';
 
 void main() => runApp(const MyApp());
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
       home: Scaffold(
+          drawer: NavigationDrawerWidget(),
           body: FutureBuilder(
               future:
                   Future.wait([dataApi.loadLocalData(), dataApi.loadData()]),
@@ -66,41 +68,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Scaffold(
       body: Center(
         child: screens[_selectedIndex],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.blue,
-        unselectedItemColor: Colors.white54,
-        unselectedLabelStyle: TextStyle(fontSize: 6),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.my_library_books),
-            label: 'all Criteria',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.horizontal_split_rounded),
-            label: 'categories',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.lock_open),
-            label: 'Define It',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.inventory),
-            label: 'collection',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mail_rounded),
-            label: 'Contact',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
       ),
     );
   }
