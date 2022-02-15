@@ -3,6 +3,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:definitly_app/data_api.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:definitly_app/navigation.dart';
+import 'package:definitly_app/search.dart';
 
 class Home extends StatelessWidget {
   @override
