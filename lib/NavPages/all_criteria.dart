@@ -98,7 +98,7 @@ class AllCriteriaState extends State<AllCriteria> {
   Widget buildSearch() =>
       SearchWidget(
           text: query,
-          hintText: "Title",
+          hintText: "criteria",
           onChanged: searchCriteria
       );
 
