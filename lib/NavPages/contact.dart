@@ -11,11 +11,49 @@ class Contact extends StatelessWidget {
         home: Scaffold(
             drawer: NavigationDrawerWidget(),
             appBar: AppBar(
-              title: Text("Contact"),
+              title: Text("about Definitly"),
             ),
             body:
                 ListView(physics: ScrollPhysics(), shrinkWrap: true, children: [
               Column(children: [
+                Container(
+                child: Markdown(
+                    onTapLink: (text, url, title) async =>
+                    {if (url != null) await launch(url)},
+                    data: dataApi.overview,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    styleSheet: MarkdownStyleSheet.fromTheme(ThemeData(
+                        textTheme: TextTheme(
+                            bodyText2: TextStyle(fontSize: 15.0))))),
+              ),
+                Container(
+                  child: Markdown(
+                      onTapLink: (text, url, title) async =>
+                      {if (url != null) await launch(url)},
+                      data: dataApi.footer,
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      styleSheet: MarkdownStyleSheet.fromTheme(ThemeData(
+                          textTheme: TextTheme(
+                              bodyText2: TextStyle(fontSize: 15.0))))),
+                ),
+                Divider(
+                  color: Colors.blue[900],
+                  thickness: 7,
+                  height: 100,
+                  indent: 20,
+                  endIndent: 20,
+                ),
+                Card(
+                    child: Text(
+                        "about the People behind Definitly",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                ),
                 Container(
                   child: Markdown(
                       onTapLink: (text, url, title) async =>

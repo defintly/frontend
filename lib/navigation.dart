@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'NavPages/home.dart';
 import 'NavPages/all_criteria.dart';
 import 'NavPages/collections.dart';
 import 'NavPages/by_category.dart';
@@ -17,34 +16,29 @@ class NavigationDrawerWidget extends StatelessWidget{
           children: <Widget>[
             const SizedBox(height: 50),
             BuildMenuItem(
-              text: 'Home',
-              icon: Icons.menu_book,
-              onClicked: () => SelectedItem(context, 0),
-            ),
-            BuildMenuItem(
               text: 'all Criteria',
               icon: Icons.my_library_books,
-              onClicked: () => SelectedItem(context, 1),
+              onClicked: () => SelectedItem(context, 0),
             ),
             BuildMenuItem(
               text: 'categories',
               icon: Icons.horizontal_split_rounded,
-              onClicked: () => SelectedItem(context, 2),
+              onClicked: () => SelectedItem(context, 1),
             ),
             BuildMenuItem(
               text: 'Define It',
               icon: Icons.lock_open,
-              onClicked: () => SelectedItem(context, 3),
+              onClicked: () => SelectedItem(context, 2),
             ),
             BuildMenuItem(
               text: 'collection',
               icon: Icons.inventory,
-              onClicked: () => SelectedItem(context, 4),
+              onClicked: () => SelectedItem(context, 3),
             ),
             BuildMenuItem(
-              text: 'Contact',
+              text: 'about',
               icon: Icons.mail_rounded,
-              onClicked: () => SelectedItem(context, 5),
+              onClicked: () => SelectedItem(context, 4),
             ),
           ],
         ),
@@ -70,31 +64,26 @@ class NavigationDrawerWidget extends StatelessWidget{
     Navigator.of(context).pop();
     switch (index) {
       case 0:
-          Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Home(),
-        ));
-          break;
-      case 1:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => AllCriteria(),
         ));
         break;
-      case 2:
+      case 1:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => ByCategory(),
         ));
         break;
-      case 3:
+      case 2:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => DefineIt(),
         ));
         break;
-      case 4:
+      case 3:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => Collections(),
         ));
         break;
-      case 5:
+      case 4:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => Contact(),
         ));
