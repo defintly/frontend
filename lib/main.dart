@@ -9,10 +9,10 @@ import 'NavPages/define_it.dart';
 import 'data_api.dart';
 import 'navigation.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const Definitly());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Definitly extends StatelessWidget {
+  const Definitly({Key? key}) : super(key: key);
 
   static const String _title = 'Definitly';
 
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
                       print(snapshot.error);
                       return Center(child: Text('Some error occurred!'));
                     } else {
-                      return MyStatefulWidget();
+                      return Collections();
                     }
                 }
               })));
