@@ -16,29 +16,24 @@ class NavigationDrawerWidget extends StatelessWidget{
           children: <Widget>[
             const SizedBox(height: 50),
             BuildMenuItem(
+              text: 'collection',
+              icon: Icons.inventory,
+              onClicked: () => SelectedItem(context, 0),
+            ),
+            BuildMenuItem(
               text: 'all Criteria',
               icon: Icons.my_library_books,
-              onClicked: () => SelectedItem(context, 0),
+              onClicked: () => SelectedItem(context, 1),
             ),
             BuildMenuItem(
               text: 'categories',
               icon: Icons.horizontal_split_rounded,
-              onClicked: () => SelectedItem(context, 1),
-            ),
-            BuildMenuItem(
-              text: 'Define It',
-              icon: Icons.lock_open,
               onClicked: () => SelectedItem(context, 2),
             ),
             BuildMenuItem(
-              text: 'collection',
-              icon: Icons.inventory,
-              onClicked: () => SelectedItem(context, 3),
-            ),
-            BuildMenuItem(
               text: 'about',
-              icon: Icons.mail_rounded,
-              onClicked: () => SelectedItem(context, 4),
+              icon: Icons.info_rounded,
+              onClicked: () => SelectedItem(context, 3),
             ),
           ],
         ),
@@ -65,25 +60,20 @@ class NavigationDrawerWidget extends StatelessWidget{
     switch (index) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => AllCriteria(),
+          builder: (context) => Collections(),
         ));
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => ByCategory(),
+          builder: (context) => AllCriteria(),
         ));
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => DefineIt(),
+          builder: (context) => ByCategory(),
         ));
         break;
       case 3:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Collections(),
-        ));
-        break;
-      case 4:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => Contact(),
         ));
