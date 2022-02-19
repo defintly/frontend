@@ -19,7 +19,6 @@ class CollectionDetails extends StatefulWidget {
 class CollectionDetailsState extends State<CollectionDetails> {
   final Collection indexCollection;
   CollectionDetailsState(this.indexCollection);
-  //AllCriteria({Key? key}) : super(key: key);
   late List<Concept> concepts;
   String query = "";
 

@@ -7,6 +7,8 @@ import 'package:definitly_app/modals/conceptList.dart';
 import 'package:definitly_app/modals/criteriaList.dart';
 import 'package:definitly_app/modals/collectionList.dart';
 import 'package:definitly_app/modals/categoryList.dart';
+import 'package:definitly_app/modals/commentList.dart';
+import 'package:definitly_app/modals/comment.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -89,6 +91,14 @@ class dataApi {
   static Collection getMatchingCollection(Concept concept) {
     return collections
         .firstWhere((element) => element.id == concept.collection_id);
+  }
+
+  static Future<CommentList> getMatchingComments(int conceptID) async {
+    String url = "https://defintly.knoblich.co/concepts/" + conceptID.toString() + "/comments";
+    final response = await http.get(Uri.parse(url));
+    var t = response.body.toString();
+    final data = json.decode(t);
+    return CommentList.fromJson(data);
   }
 }
 

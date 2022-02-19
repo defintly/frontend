@@ -20,7 +20,7 @@ class ByCategory extends StatelessWidget {
         home: Scaffold(
             drawer: NavigationDrawerWidget(),
             appBar: AppBar(
-              title: Text("Collections"),
+              title: Text("categories"),
             ),
             body: ListView.builder(
               physics: ScrollPhysics(),
