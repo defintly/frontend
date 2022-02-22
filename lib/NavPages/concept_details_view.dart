@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:definitly_app/NavPages/concept_details.dart';
 import 'package:definitly_app/modals/collection.dart';
 import 'package:definitly_app/modals/concept.dart';
 import 'package:definitly_app/modals/login.dart';
@@ -17,19 +18,25 @@ import 'package:definitly_app/modals/commentList.dart';
 import 'package:definitly_app/commentWidget.dart';
 import 'package:definitly_app/NavPages/login.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class ConeptDetailsView extends StatelessWidget {
-  final Concept index;
-  final CommentList comments;
+  late Concept index;
+  late CommentList comments;
+  late Collection collection;
 
-  ConeptDetailsView(this.index, this.comments);
+  ConeptDetailsView(Concept index,CommentList comments){
+    this.index = index;
+    this.comments = comments;
+    collection = dataApi.getMatchingCollection(index);
+  }
+
+
 
   final commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    var collection = dataApi.getMatchingCollection(index);
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         drawer: NavigationDrawerWidget(),
@@ -62,7 +69,7 @@ class ConeptDetailsView extends StatelessWidget {
                     styleSheet: MarkdownStyleSheet.fromTheme(ThemeData(
                         textTheme:
                             TextTheme(bodyText2: TextStyle(fontSize: 16.0))))),
-                width: MediaQuery.of(context).size.width * 0.9,
+                //width: MediaQuery.of(context).size.width * 0.9,
               ),
               Container(
                 child: Markdown(
@@ -89,7 +96,7 @@ class ConeptDetailsView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      width: MediaQuery.of(context).size.width * 0.8,
+                      width: 300 //MediaQuery.of(context).size.width * 0.8,
                     ),
                     IconButton(
                         onPressed: () {
@@ -118,16 +125,8 @@ class ConeptDetailsView extends StatelessWidget {
                                   child: Text(comments.comments[index].author),
                                 ),
                                 Container(
-                                  child: Text(comments
-                                          .comments[index].creationTime.day
-                                          .toString() +
-                                      "-" +
-                                      comments
-                                          .comments[index].creationTime.month
-                                          .toString() +
-                                      "-" +
-                                      comments.comments[index].creationTime.year
-                                          .toString()),
+                                  child: Text( DateFormat("dd-MM-yyyy HH:mm:ss").format(comments.comments[index].creationTime)
+                                  )
                                 )
                               ],
                             ),
@@ -152,7 +151,12 @@ class ConeptDetailsView extends StatelessWidget {
 
   Future<void> sendComment(String comment, BuildContext context, Concept index) async {
     var key = "";
-    var jsonComment = '{"text" : ' + '"' + comment + '"}';
+
+    if(comment.isEmpty){
+      return;
+    }
+
+    var jsonComment = {"text" : comment};
     key = saveLoginData.key;
     if (key.isEmpty) {
       var key = saveLoginData.read();
@@ -167,16 +171,17 @@ class ConeptDetailsView extends StatelessWidget {
               ));
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => login()));
+      return;
     }
 
     var client = http.Client();
     var body = json.encode(jsonComment);
-    var result = "";
+    var result;
     try {
       var response = await client.post(
           Uri.parse("https://defintly.knoblich.co/concepts/" + index.id.toString() + "/comments"),
           headers: {
-            HttpHeaders.authorizationHeader: key,
+            "X-Auth-Key" : key,
           },
           body: body);
       result = json.decode(response.body);
@@ -190,6 +195,10 @@ class ConeptDetailsView extends StatelessWidget {
           ));
     } finally {
       client.close();
+    }
+    if (result["text"] == comment){
+      Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context) => ConceptDetails(index)));
     }
   }
 }

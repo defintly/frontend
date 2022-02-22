@@ -27,13 +27,14 @@ class ConceptDetails extends StatefulWidget {
 
 class _ConceptDetailsState extends State<ConceptDetails> {
   late CommentList comments;
-
+  late Future<void> _future;
   final commentController = TextEditingController();
 
   String comment = "";
 
   @override
   void initState() {
+    _future = Future.wait([getComments()]);
     super.initState();
   }
 
@@ -45,7 +46,7 @@ class _ConceptDetailsState extends State<ConceptDetails> {
         resizeToAvoidBottomInset: false,
         drawer: NavigationDrawerWidget(),
         body: FutureBuilder(
-            future: Future.wait([getComments()]),
+            future: _future,
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.waiting:
@@ -55,8 +56,9 @@ class _ConceptDetailsState extends State<ConceptDetails> {
                     print(snapshot.error);
                     return Center(child: Text('Some error occurred!'));
                   } else {
-                    return Container(
+                    return  Container(
                       child: ConeptDetailsView(widget.index, comments)
+
                     );
                   }
               }
@@ -77,4 +79,5 @@ class _ConceptDetailsState extends State<ConceptDetails> {
       }
     }
   }
+  //final t = Future.wait([getComments()]);
 }
