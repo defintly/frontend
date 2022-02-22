@@ -16,7 +16,7 @@ class Comment {
   int userId;
   String text;
   bool allowed;
-  String creationTime;
+  DateTime creationTime;
   String author = "";
 
   factory Comment.fromJson(Map<String, dynamic> json) {

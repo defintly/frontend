@@ -3,12 +3,11 @@ import 'NavPages/all_criteria.dart';
 import 'NavPages/collections.dart';
 import 'NavPages/by_category.dart';
 import 'NavPages/contact.dart';
+import 'NavPages/login.dart';
 import 'NavPages/define_it.dart';
 
-
-class NavigationDrawerWidget extends StatelessWidget{
-
-  Widget build(context){
+class NavigationDrawerWidget extends StatelessWidget {
+  Widget build(context) {
     return Drawer(
       child: Material(
         color: Colors.blue,
@@ -16,24 +15,29 @@ class NavigationDrawerWidget extends StatelessWidget{
           children: <Widget>[
             const SizedBox(height: 50),
             BuildMenuItem(
-              text: 'collection',
+              text: 'Collections',
               icon: Icons.inventory,
               onClicked: () => SelectedItem(context, 0),
             ),
             BuildMenuItem(
-              text: 'all Criteria',
+              text: 'All Criteria',
               icon: Icons.my_library_books,
               onClicked: () => SelectedItem(context, 1),
             ),
             BuildMenuItem(
-              text: 'categories',
+              text: 'Categories',
               icon: Icons.horizontal_split_rounded,
               onClicked: () => SelectedItem(context, 2),
             ),
             BuildMenuItem(
-              text: 'about',
+              text: 'About',
               icon: Icons.info_rounded,
               onClicked: () => SelectedItem(context, 3),
+            ),
+            BuildMenuItem(
+              text: 'Login / Register',
+              icon: Icons.person,
+              onClicked: () => SelectedItem(context, 4),
             ),
           ],
         ),
@@ -76,6 +80,11 @@ class NavigationDrawerWidget extends StatelessWidget{
       case 3:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => Contact(),
+        ));
+        break;
+      case 4:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => login(),
         ));
         break;
     }

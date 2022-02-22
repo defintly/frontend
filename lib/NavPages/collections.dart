@@ -26,13 +26,14 @@ class CollectionsState extends State<Collections> {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'By Collections';
+    const title = 'Collections';
     return MaterialApp(
         title: title,
         home: Scaffold(
+            resizeToAvoidBottomInset: false,
             drawer: NavigationDrawerWidget(),
             appBar: AppBar(
-              title: Text("By Collections"),
+              title: Text("Collections"),
             ),
             body: Column(
               children: [

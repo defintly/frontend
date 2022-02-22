@@ -6,7 +6,6 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import '../search.dart';
 import 'concept_details.dart';
 import 'package:definitly_app/navigation.dart';
-import 'package:definitly_app/navigation.dart';
 import 'package:definitly_app/modals/concept.dart';
 
 class CollectionDetails extends StatefulWidget {
@@ -32,6 +31,7 @@ class CollectionDetailsState extends State<CollectionDetails> {
     return MaterialApp(
         title: indexCollection.collection,
         home: Scaffold(
+            resizeToAvoidBottomInset: false,
             drawer: NavigationDrawerWidget(),
             appBar: AppBar(
               title: Text(indexCollection.collection),
@@ -94,10 +94,9 @@ class CollectionDetailsState extends State<CollectionDetails> {
       );
 
   void searchCollections(String query) {
+    final searchLower = query.toLowerCase();
     final conceptsList = dataApi.getMatchingConcepts(indexCollection).where((concept) {
       final conceptsLower = concept.author.toLowerCase();
-      final searchLower = query.toLowerCase();
-
       return conceptsLower.contains(searchLower);
     }).toList();
 

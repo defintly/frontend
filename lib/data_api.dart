@@ -9,6 +9,7 @@ import 'package:definitly_app/modals/collectionList.dart';
 import 'package:definitly_app/modals/categoryList.dart';
 import 'package:definitly_app/modals/commentList.dart';
 import 'package:definitly_app/modals/comment.dart';
+import 'package:definitly_app/modals/users.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -99,6 +100,15 @@ class dataApi {
     var t = response.body.toString();
     final data = json.decode(t);
     return CommentList.fromJson(data);
+  }
+
+  static Future<String> getAuthor(int userId) async {
+    String url = "https://defintly.knoblich.co/users/" + userId.toString();
+    final response = await http.get(Uri.parse(url));
+    var t = response.body.toString();
+    final data = json.decode(t);
+    var u = Users.fromJson(data);
+    return u.username;
   }
 }
 

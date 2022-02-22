@@ -29,6 +29,7 @@ class AllCriteriaState extends State<AllCriteria> {
     return MaterialApp(
         title: title,
         home: Scaffold(
+            resizeToAvoidBottomInset: false,
             drawer: NavigationDrawerWidget(),
             appBar: AppBar(
               title: Text("All Criteria"),
